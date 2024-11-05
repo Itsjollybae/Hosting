@@ -1,14 +1,11 @@
 <?php
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && !empty($_POST['username'])) {
 
-    var_dump($_POST);
-
-    $username = $_POST['username'];
-
+    $username = trim($_POST['username']);
     $_SESSION['username'] = $username;
 
-    header(header: 'Location: index.php');
+    header('Location: index.php');
     exit;
 }
